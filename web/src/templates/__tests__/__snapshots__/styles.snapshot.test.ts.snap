@@ -1,0 +1,160 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`minimal-clean スタイル > cover スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:linear-gradient(135deg,#E91E63 0%,#ba184f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:80px"`;
+
+exports[`minimal-clean スタイル > cover スライド 2`] = `
+"
+      <div style="position:absolute;top:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.08)"></div>
+      <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.05)"></div>
+      <div style="position:relative;z-index:1;text-align:center">
+        <h1 style="font-size:80px;font-weight:900;line-height:1.4;letter-spacing:-0.02em;margin-bottom:40px;white-space:pre-line;">テストカバー</h1>
+        <div style="width:80px;height:4px;background:#FFC107;margin:0 auto 40px;border-radius:2px"></div>
+        <p style="font-size:28px;opacity:0.7">swipe for more →</p>
+      </div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:36px;height:12px;border-radius:6px;background:#fff"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div></div>
+    "
+`;
+
+exports[`minimal-clean スタイル > cta スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:linear-gradient(135deg,#E91E63 0%,#ba184f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:80px"`;
+
+exports[`minimal-clean スタイル > cta スライド 2`] = `
+"
+      <div style="position:absolute;top:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.06)"></div>
+      <div style="position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
+      <div style="position:relative;z-index:1">
+        <p style="font-size:28px;opacity:0.8;letter-spacing:0.2em;margin-bottom:40px">最後までご覧いただきありがとうございます</p>
+        <h2 style="font-size:72px;font-weight:900;line-height:1.4;margin-bottom:50px;white-space:pre-line;">CTA</h2>
+        <div style="width:80px;height:4px;background:#FFC107;margin:0 auto 50px;border-radius:2px"></div>
+        <p style="font-size:36px;opacity:0.9;line-height:1.8;margin-bottom:60px;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">アクション</p>
+        <div style="display:inline-block;background:#FFC107;color:#ba184f;font-size:32px;font-weight:700;padding:24px 64px;border-radius:100px;box-shadow:0 12px 40px rgba(0,0,0,0.2)">プロフィールをチェック →</div>
+        <p style="margin-top:50px;font-size:24px;opacity:0.7;letter-spacing:0.1em">フォローして最新情報をチェック</p>
+      </div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:36px;height:12px;border-radius:6px;background:#fff"></div></div>
+    "
+`;
+
+exports[`minimal-clean スタイル > tip スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:#FAFAFA;display:flex;flex-direction:column"`;
+
+exports[`minimal-clean スタイル > tip スライド 2`] = `
+"
+      
+      <div style="width:100%;height:12px;background:linear-gradient(90deg,#E91E63,#FFC107)"></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 100px;text-align:center">
+        <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#E91E63,#ba184f);display:flex;align-items:center;justify-content:center;margin-bottom:50px;box-shadow:0 20px 60px rgba(233, 30, 99, 0.3)">
+          <span style="font-size:56px;font-weight:900;color:#fff">1</span>
+        </div>
+        <p style="font-size:24px;font-weight:700;color:#E91E63;letter-spacing:0.15em;margin-bottom:24px">POINT 1</p>
+        <h2 style="font-size:64px;font-weight:900;color:#1a1a1a;line-height:1.3;margin-bottom:40px;white-space:pre-line">ポイント</h2>
+        <div style="width:60px;height:4px;background:#FFC107;margin:0 auto 40px;border-radius:2px"></div>
+        <p style="font-size:40px;color:#555;line-height:1.8;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">説明</p>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#fde9ef,transparent);opacity:0.5"></div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:36px;height:12px;border-radius:6px;background:#E91E63"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div></div>
+    "
+`;
+
+exports[`promo-bold スタイル > cover スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:linear-gradient(135deg,#E91E63 0%,#ba184f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:80px"`;
+
+exports[`promo-bold スタイル > cover スライド 2`] = `
+"
+      <div style="position:absolute;top:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.08)"></div>
+      <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.05)"></div>
+      <div style="position:relative;z-index:1;text-align:center">
+        <h1 style="font-size:80px;font-weight:900;line-height:1.4;letter-spacing:-0.02em;margin-bottom:40px;white-space:pre-line;">テストカバー</h1>
+        <div style="width:80px;height:4px;background:#FFC107;margin:0 auto 40px;border-radius:2px"></div>
+        <p style="font-size:28px;opacity:0.7">swipe for more →</p>
+      </div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:36px;height:12px;border-radius:6px;background:#fff"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div></div>
+    "
+`;
+
+exports[`promo-bold スタイル > cta スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:linear-gradient(135deg,#E91E63 0%,#ba184f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:80px"`;
+
+exports[`promo-bold スタイル > cta スライド 2`] = `
+"
+      <div style="position:absolute;top:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.06)"></div>
+      <div style="position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
+      <div style="position:relative;z-index:1">
+        <p style="font-size:28px;opacity:0.8;letter-spacing:0.2em;margin-bottom:40px">最後までご覧いただきありがとうございます</p>
+        <h2 style="font-size:72px;font-weight:900;line-height:1.4;margin-bottom:50px;white-space:pre-line;">CTA</h2>
+        <div style="width:80px;height:4px;background:#FFC107;margin:0 auto 50px;border-radius:2px"></div>
+        <p style="font-size:36px;opacity:0.9;line-height:1.8;margin-bottom:60px;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">アクション</p>
+        <div style="display:inline-block;background:#FFC107;color:#ba184f;font-size:32px;font-weight:700;padding:24px 64px;border-radius:100px;box-shadow:0 12px 40px rgba(0,0,0,0.2)">プロフィールをチェック →</div>
+        <p style="margin-top:50px;font-size:24px;opacity:0.7;letter-spacing:0.1em">フォローして最新情報をチェック</p>
+      </div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:36px;height:12px;border-radius:6px;background:#fff"></div></div>
+    "
+`;
+
+exports[`promo-bold スタイル > tip スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:#1A1A1A;display:flex;flex-direction:column"`;
+
+exports[`promo-bold スタイル > tip スライド 2`] = `
+"
+      
+      <div style="width:100%;height:12px;background:linear-gradient(90deg,#E91E63,#FFC107)"></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 100px;text-align:center">
+        <div style="width:120px;height:120px;border-radius:8px;background:linear-gradient(135deg,#E91E63,#ba184f);display:flex;align-items:center;justify-content:center;margin-bottom:50px;box-shadow:0 20px 60px rgba(233, 30, 99, 0.3)">
+          <span style="font-size:56px;font-weight:900;color:#fff">1</span>
+        </div>
+        <p style="font-size:24px;font-weight:700;color:#E91E63;letter-spacing:0.15em;margin-bottom:24px">POINT 1</p>
+        <h2 style="font-size:64px;font-weight:900;color:#FFFFFF;line-height:1.3;margin-bottom:40px;white-space:pre-line">ポイント</h2>
+        <div style="width:60px;height:4px;background:#FFC107;margin:0 auto 40px;border-radius:2px"></div>
+        <p style="font-size:40px;color:#B0BEC5;line-height:1.8;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">説明</p>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#fde9ef,transparent);opacity:0.5"></div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:36px;height:12px;border-radius:6px;background:#E91E63"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div></div>
+    "
+`;
+
+exports[`soft-natural スタイル > cover スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:linear-gradient(135deg,#E91E63 0%,#ba184f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:80px"`;
+
+exports[`soft-natural スタイル > cover スライド 2`] = `
+"
+      <div style="position:absolute;top:-120px;right:-120px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.08)"></div>
+      <div style="position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.05)"></div>
+      <div style="position:relative;z-index:1;text-align:center">
+        <h1 style="font-size:80px;font-weight:700;line-height:1.4;letter-spacing:-0.02em;margin-bottom:40px;white-space:pre-line;">テストカバー</h1>
+        <div style="width:80px;height:4px;background:#FFC107;margin:0 auto 40px;border-radius:2px"></div>
+        <p style="font-size:28px;opacity:0.7">swipe for more →</p>
+      </div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:36px;height:12px;border-radius:6px;background:#fff"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div></div>
+    "
+`;
+
+exports[`soft-natural スタイル > cta スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:linear-gradient(135deg,#E91E63 0%,#ba184f 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:80px"`;
+
+exports[`soft-natural スタイル > cta スライド 2`] = `
+"
+      <div style="position:absolute;top:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:rgba(255,255,255,0.06)"></div>
+      <div style="position:absolute;bottom:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.04)"></div>
+      <div style="position:relative;z-index:1">
+        <p style="font-size:28px;opacity:0.8;letter-spacing:0.2em;margin-bottom:40px">最後までご覧いただきありがとうございます</p>
+        <h2 style="font-size:72px;font-weight:700;line-height:1.4;margin-bottom:50px;white-space:pre-line;">CTA</h2>
+        <div style="width:80px;height:4px;background:#FFC107;margin:0 auto 50px;border-radius:2px"></div>
+        <p style="font-size:36px;opacity:0.9;line-height:1.8;margin-bottom:60px;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">アクション</p>
+        <div style="display:inline-block;background:#FFC107;color:#ba184f;font-size:32px;font-weight:700;padding:24px 64px;border-radius:100px;box-shadow:0 12px 40px rgba(0,0,0,0.2)">プロフィールをチェック →</div>
+        <p style="margin-top:50px;font-size:24px;opacity:0.7;letter-spacing:0.1em">フォローして最新情報をチェック</p>
+      </div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3)"></div><div style="width:36px;height:12px;border-radius:6px;background:#fff"></div></div>
+    "
+`;
+
+exports[`soft-natural スタイル > tip スライド 1`] = `"width:1080px;height:1350px;font-family:'Noto Sans JP', sans-serif;position:relative;overflow:hidden;background:#FFF8F0;display:flex;flex-direction:column"`;
+
+exports[`soft-natural スタイル > tip スライド 2`] = `
+"
+      
+      <div style="width:100%;height:12px;background:linear-gradient(90deg,#E91E63,#FFC107)"></div>
+      <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 100px;text-align:center">
+        <div style="width:120px;height:120px;border-radius:16px;background:linear-gradient(135deg,#E91E63,#ba184f);display:flex;align-items:center;justify-content:center;margin-bottom:50px;box-shadow:0 20px 60px rgba(233, 30, 99, 0.3)">
+          <span style="font-size:56px;font-weight:900;color:#fff">1</span>
+        </div>
+        <p style="font-size:24px;font-weight:700;color:#E91E63;letter-spacing:0.15em;margin-bottom:24px">POINT 1</p>
+        <h2 style="font-size:64px;font-weight:700;color:#3E2723;line-height:1.3;margin-bottom:40px;white-space:pre-line">ポイント</h2>
+        <div style="width:60px;height:4px;background:#FFC107;margin:0 auto 40px;border-radius:2px"></div>
+        <p style="font-size:40px;color:#6D4C41;line-height:1.8;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;">説明</p>
+      </div>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(to top,#fde9ef,transparent);opacity:0.5"></div>
+      <div style="position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:2;"><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:36px;height:12px;border-radius:6px;background:#E91E63"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div><div style="width:12px;height:12px;border-radius:50%;background:#ccc"></div></div>
+    "
+`;

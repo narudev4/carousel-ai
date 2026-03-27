@@ -1,0 +1,10 @@
+name = "carousel-ai-api"
+main = "src/index.ts"
+compatibility_date = "2025-03-27"
+
+[vars]
+ENVIRONMENT = "production"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "c5cdfa6d68d04faba323be7a463fb50a"

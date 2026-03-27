@@ -1,0 +1,17 @@
+{
+  "name": "carousel-ai",
+  "private": true,
+  "workspaces": [
+    "api",
+    "web",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w api\" \"npm run dev -w web\"",
+    "dev:api": "npm run dev -w api",
+    "dev:web": "npm run dev -w web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
