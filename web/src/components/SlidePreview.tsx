@@ -53,11 +53,10 @@ export function SlidePreview({ slides, brandColor, accentColor, slideRefs, style
       </div>
 
       {/* ドットインジケーター（モバイル用） */}
-      <div className="flex justify-center gap-2 mt-2 md:hidden" role="tablist" aria-label="スライドナビゲーション">
+      <div className="flex justify-center gap-2 mt-2 md:hidden">
         {slides.map((_, i) => (
           <button
             key={i}
-            role="tab"
             aria-label={`${i + 1}枚目へ移動`}
             onClick={() => {
               const container = scrollRef.current;
