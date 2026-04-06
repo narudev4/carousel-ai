@@ -11,3 +11,11 @@ export type {
 export { CATEGORIES } from './categories';
 export { FORMATS } from './formats';
 export { sanitizeInput, sanitizeHexColor } from './sanitize';
+export type { AccountProfile, GoalType, ToneType } from './accountProfile';
+export {
+  GOAL_LABELS,
+  TONE_LABELS,
+  ACCOUNT_PROFILE_KEY,
+  loadAccountProfile,
+  saveAccountProfile,
+} from './accountProfile';
