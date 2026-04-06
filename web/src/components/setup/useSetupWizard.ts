@@ -65,9 +65,25 @@ function buildProfile(answers: RawAnswers): AccountProfile {
   };
 }
 
-export function useSetupWizard(onComplete: () => void) {
+function profileToAnswers(profile: AccountProfile): RawAnswers {
+  return {
+    genre: profile.identity.genre,
+    targetAudience: profile.identity.targetAudience,
+    sellWhat: profile.identity.sellWhat,
+    primaryGoal: profile.strategy.primaryGoal,
+    primaryGoalOther: profile.strategy.primaryGoal === 'other' ? profile.strategy.specificGoal : '',
+    specificGoal: profile.strategy.specificGoal,
+    tone: profile.style.tone,
+    referenceAccounts: profile.strategy.referenceAccounts.join(', '),
+    ngExpressions: profile.style.ngExpressions.join(', '),
+  };
+}
+
+export function useSetupWizard(onComplete: () => void, initialProfile?: AccountProfile | null) {
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<RawAnswers>(EMPTY_ANSWERS);
+  const [answers, setAnswers] = useState<RawAnswers>(
+    initialProfile ? profileToAnswers(initialProfile) : EMPTY_ANSWERS
+  );
   const [saveError, setSaveError] = useState<string | null>(null);
 
   function updateAnswer<K extends keyof RawAnswers>(key: K, value: RawAnswers[K]) {

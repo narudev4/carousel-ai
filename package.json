@@ -9,7 +9,11 @@
   "scripts": {
     "dev": "concurrently \"npm run dev -w api\" \"npm run dev -w web\"",
     "dev:api": "npm run dev -w api",
-    "dev:web": "npm run dev -w web"
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build -w web",
+    "deploy:api": "npm run deploy -w api",
+    "deploy:web": "npm run build -w web && wrangler pages deploy web/dist --project-name carousel-ai",
+    "deploy": "npm run deploy:api && npm run deploy:web"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"

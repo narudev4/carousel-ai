@@ -1,9 +1,10 @@
 import { GOAL_LABELS, TONE_LABELS } from 'shared/accountProfile';
-import type { GoalType, ToneType } from 'shared/accountProfile';
+import type { GoalType, ToneType, AccountProfile } from 'shared/accountProfile';
 import { useSetupWizard, TOTAL_STEPS, CORE_STEPS } from './useSetupWizard';
 
 interface Props {
   onComplete: () => void;
+  initialProfile?: AccountProfile | null;
 }
 
 interface StepDef {
@@ -74,9 +75,9 @@ const STEPS: StepDef[] = [
 const GOAL_OPTIONS = Object.entries(GOAL_LABELS) as [GoalType, string][];
 const TONE_OPTIONS = Object.entries(TONE_LABELS) as [ToneType, string][];
 
-export function SetupWizard({ onComplete }: Props) {
+export function SetupWizard({ onComplete, initialProfile }: Props) {
   const { step, answers, saveError, updateAnswer, next, back, finish, isCoreComplete, isCurrentStepValid } =
-    useSetupWizard(onComplete);
+    useSetupWizard(onComplete, initialProfile);
 
   const stepDef = STEPS[step];
   const progress = ((step + 1) / TOTAL_STEPS) * 100;

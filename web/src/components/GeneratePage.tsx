@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { loadAccountProfile, ACCOUNT_PROFILE_KEY } from 'shared/accountProfile';
+import { loadAccountProfile } from 'shared/accountProfile';
+import type { AccountProfile } from 'shared/accountProfile';
 import { ModeSelector } from './ModeSelector';
 import { TextFlow } from './TextFlow';
 import { PhotoFlow } from './PhotoFlow';
@@ -10,28 +11,36 @@ const PHOTO_MODE_ENABLED = true;
 
 export function GeneratePage() {
   const [showWizard, setShowWizard] = useState(() => loadAccountProfile() === null);
+  const [editProfile, setEditProfile] = useState<AccountProfile | null>(null);
   const [mode, setMode] = useState<'text' | 'photo' | null>(
     PHOTO_MODE_ENABLED ? null : 'text'
   );
 
-  if (showWizard) {
-    return <SetupWizard onComplete={() => setShowWizard(false)} />;
+  if (showWizard || editProfile !== null) {
+    return (
+      <SetupWizard
+        initialProfile={editProfile}
+        onComplete={() => {
+          setShowWizard(false);
+          setEditProfile(null);
+        }}
+      />
+    );
   }
 
-  function handleResetProfile() {
-    localStorage.removeItem(ACCOUNT_PROFILE_KEY);
-    setShowWizard(true);
+  function handleEditProfile() {
+    setEditProfile(loadAccountProfile());
     setMode(null);
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-2xl mx-auto px-4 py-8">
-        {/* プロフィール再設定リンク */}
+        {/* プロフィール編集リンク */}
         {mode === null && (
           <div className="text-right mb-2">
             <button
-              onClick={handleResetProfile}
+              onClick={handleEditProfile}
               className="text-xs text-gray-400 hover:text-pink-500 transition-colors"
             >
               アカウント設定を変更
