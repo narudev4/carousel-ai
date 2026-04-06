@@ -1,5 +1,7 @@
 import { CATEGORIES } from '../../../shared/src/categories';
 import { FORMATS } from '../../../shared/src/formats';
+import type { AccountProfile } from '../../../shared/src/accountProfile';
+import { GOAL_LABELS, TONE_LABELS } from '../../../shared/src/accountProfile';
 
 const BASE_SYSTEM_PROMPT = `あなたはInstagramカルーセル投稿の専門コピーライター兼デザイナーです。
 日本語ネイティブで、小規模事業者のIG運用を支援します。
@@ -58,6 +60,33 @@ const JSON_FORMAT_INSTRUCTION = `
   }
 }`;
 
+// ===== AccountProfile 文脈プロンプト =====
+
+export function buildAccountContextPrompt(profile: AccountProfile): string {
+  const goal = GOAL_LABELS[profile.strategy.primaryGoal] ?? profile.strategy.primaryGoal;
+  const tone = TONE_LABELS[profile.style.tone] ?? profile.style.tone;
+  const ng = profile.style.ngExpressions.length > 0
+    ? profile.style.ngExpressions.join(' / ')
+    : 'なし';
+  const refs = profile.strategy.referenceAccounts.length > 0
+    ? profile.strategy.referenceAccounts.join(' / ')
+    : 'なし';
+  const specificGoal = profile.strategy.specificGoal || '未設定';
+
+  return `
+# アカウント情報
+- ジャンル: ${profile.identity.genre || '未設定'}
+- ターゲット層: ${profile.identity.targetAudience || '未設定'}
+- 提供価値・商品: ${profile.identity.sellWhat || '未設定'}
+- 主目標: ${goal}（具体目標: ${specificGoal}）
+- 口調・トーン: ${tone}
+- NG表現: ${ng}
+- 参考アカウント: ${refs}
+
+このアカウントらしさを最優先し、ターゲット層に刺さる表現を選んでください。
+口調（${tone}）を全スライドとキャプションで一貫させてください。`;
+}
+
 // ===== 写真分析用プロンプト（Vision API用） =====
 
 export function buildPhotoSystemPrompt(): string {
@@ -78,7 +107,12 @@ JSON以外のテキストは含めないでください。
 - moodは写真の雰囲気・色調から判断`;
 }
 
-export function buildSystemPrompt(categoryId: string, formatId: string, mood?: string): string {
+export function buildSystemPrompt(
+  categoryId: string,
+  formatId: string,
+  mood?: string,
+  accountProfile?: AccountProfile,
+): string {
   const category = CATEGORIES.find((c) => c.id === categoryId);
   const format = FORMATS.find((f) => f.id === formatId);
 
@@ -96,6 +130,10 @@ export function buildSystemPrompt(categoryId: string, formatId: string, mood?: s
 
   if (mood) {
     parts.splice(2, 0, `\n# 写真の雰囲気: ${mood}\nこの雰囲気に合ったトーンでコピーを書いてください。`);
+  }
+
+  if (accountProfile) {
+    parts.splice(1, 0, buildAccountContextPrompt(accountProfile));
   }
 
   return parts.join('\n');

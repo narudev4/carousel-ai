@@ -77,7 +77,7 @@ generateRoute.post('/generate', async (c) => {
   }
 
   // DeepSeek V3 API呼び出し
-  const systemPrompt = buildSystemPrompt(body.category, body.format);
+  const systemPrompt = buildSystemPrompt(body.category, body.format, undefined, body.accountProfile ?? undefined);
   const userPrompt = buildUserPrompt(theme, cta, additionalInfo);
 
   const client = new OpenAI({

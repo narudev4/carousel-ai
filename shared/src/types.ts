@@ -19,6 +19,7 @@ export interface GenerateRequest {
   accentColor?: string;
   cta?: string; // 最大100文字
   additionalInfo?: string; // 最大500文字
+  accountProfile?: import('./accountProfile').AccountProfile; // アカウント記憶（任意）
 }
 
 export interface Slide {
