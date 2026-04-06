@@ -19,3 +19,5 @@ export {
   loadAccountProfile,
   saveAccountProfile,
 } from './accountProfile';
+export type { IndustryPattern } from './industryPatterns';
+export { INDUSTRY_PATTERNS, matchIndustryPattern } from './industryPatterns';
