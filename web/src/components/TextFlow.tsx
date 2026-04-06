@@ -6,6 +6,7 @@ import { SlidePreview } from './SlidePreview';
 import { ResultPanel } from './ResultPanel';
 import { SaveButton } from './SaveButton';
 import type { GenerateResponse } from 'shared/types';
+import { loadAccountProfile } from 'shared/accountProfile';
 
 type Step = 1 | 2 | 3 | 'loading' | 'result';
 
@@ -56,6 +57,7 @@ export function TextFlow({ onBack }: Props) {
           accentColor: formData.accentColor,
           cta: formData.cta || undefined,
           additionalInfo: formData.additionalInfo || undefined,
+          accountProfile: loadAccountProfile() ?? undefined,
         }),
         signal: controller.signal,
       });
