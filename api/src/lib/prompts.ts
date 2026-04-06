@@ -186,6 +186,8 @@ export function buildAccountContextPrompt(
 
   const industrySection = industryPattern
     ? `\n# 業種別ガイドライン（${industryPattern.name}）
+- 推奨フック順: ${industryPattern.preferredHooks.join(' → ')}（この順で検討し、テーマに最も合うものを選ぶ）
+- 相性の良いフォーマット: ${industryPattern.preferredFormats.join(' / ')}
 - CTAスタイル: ${industryPattern.ctaStyle}
 - 法務・コピー制約:
 ${industryPattern.copyConstraints.map((c) => `  - ${c}`).join('\n')}${industryPattern.toneNote ? `\n- 表現のポイント: ${industryPattern.toneNote}` : ''}`
