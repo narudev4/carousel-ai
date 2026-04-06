@@ -14,7 +14,7 @@
     "deploy:api": "npm run deploy -w api",
     "deploy:web": "npm run build -w web && wrangler pages deploy web/dist --project-name carousel-ai",
     "deploy": "npm run deploy:api && npm run deploy:web",
-    "test:e2e": "playwright test --config=playwright.config.ts"
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
