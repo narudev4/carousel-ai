@@ -68,6 +68,7 @@ function buildProfile(answers: RawAnswers): AccountProfile {
 export function useSetupWizard(onComplete: () => void) {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<RawAnswers>(EMPTY_ANSWERS);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   function updateAnswer<K extends keyof RawAnswers>(key: K, value: RawAnswers[K]) {
     setAnswers((prev) => ({ ...prev, [key]: value }));
@@ -83,8 +84,12 @@ export function useSetupWizard(onComplete: () => void) {
 
   function finish() {
     const profile = buildProfile(answers);
-    saveAccountProfile(profile);
-    onComplete();
+    try {
+      saveAccountProfile(profile);
+      onComplete();
+    } catch (e) {
+      setSaveError(e instanceof Error ? e.message : 'プロフィールの保存に失敗しました');
+    }
   }
 
   function isCoreComplete(): boolean {
@@ -109,6 +114,7 @@ export function useSetupWizard(onComplete: () => void) {
   return {
     step,
     answers,
+    saveError,
     updateAnswer,
     next,
     back,

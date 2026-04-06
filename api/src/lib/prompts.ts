@@ -62,22 +62,30 @@ const JSON_FORMAT_INSTRUCTION = `
 
 // ===== AccountProfile 文脈プロンプト =====
 
+/** Strip prompt-injection characters and limit string length */
+function sanitizeProfileField(value: string, maxLen = 100): string {
+  return value
+    .replace(/[`#\[\]{}\\]/g, '')  // remove markdown/prompt-special chars
+    .slice(0, maxLen)
+    .trim();
+}
+
 export function buildAccountContextPrompt(profile: AccountProfile): string {
   const goal = GOAL_LABELS[profile.strategy.primaryGoal] ?? profile.strategy.primaryGoal;
   const tone = TONE_LABELS[profile.style.tone] ?? profile.style.tone;
   const ng = profile.style.ngExpressions.length > 0
-    ? profile.style.ngExpressions.join(' / ')
+    ? profile.style.ngExpressions.map((s) => sanitizeProfileField(s, 50)).join(' / ')
     : 'なし';
   const refs = profile.strategy.referenceAccounts.length > 0
-    ? profile.strategy.referenceAccounts.join(' / ')
+    ? profile.strategy.referenceAccounts.map((s) => sanitizeProfileField(s, 50)).join(' / ')
     : 'なし';
-  const specificGoal = profile.strategy.specificGoal || '未設定';
+  const specificGoal = sanitizeProfileField(profile.strategy.specificGoal, 100) || '未設定';
 
   return `
 # アカウント情報
-- ジャンル: ${profile.identity.genre || '未設定'}
-- ターゲット層: ${profile.identity.targetAudience || '未設定'}
-- 提供価値・商品: ${profile.identity.sellWhat || '未設定'}
+- ジャンル: ${sanitizeProfileField(profile.identity.genre) || '未設定'}
+- ターゲット層: ${sanitizeProfileField(profile.identity.targetAudience) || '未設定'}
+- 提供価値・商品: ${sanitizeProfileField(profile.identity.sellWhat) || '未設定'}
 - 主目標: ${goal}（具体目標: ${specificGoal}）
 - 口調・トーン: ${tone}
 - NG表現: ${ng}

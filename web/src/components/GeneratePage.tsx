@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { loadAccountProfile } from 'shared/accountProfile';
+import { loadAccountProfile, ACCOUNT_PROFILE_KEY } from 'shared/accountProfile';
 import { ModeSelector } from './ModeSelector';
 import { TextFlow } from './TextFlow';
 import { PhotoFlow } from './PhotoFlow';
@@ -18,9 +18,27 @@ export function GeneratePage() {
     return <SetupWizard onComplete={() => setShowWizard(false)} />;
   }
 
+  function handleResetProfile() {
+    localStorage.removeItem(ACCOUNT_PROFILE_KEY);
+    setShowWizard(true);
+    setMode(null);
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-2xl mx-auto px-4 py-8">
+        {/* プロフィール再設定リンク */}
+        {mode === null && (
+          <div className="text-right mb-2">
+            <button
+              onClick={handleResetProfile}
+              className="text-xs text-gray-400 hover:text-pink-500 transition-colors"
+            >
+              アカウント設定を変更
+            </button>
+          </div>
+        )}
+
         {mode === null && (
           <ModeSelector onSelect={setMode} />
         )}

@@ -29,6 +29,12 @@ export function TextFlow({ onBack }: Props) {
   const [isLoading, setIsLoading] = useState(false);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  const handleCancel = useCallback(() => {
+    abortControllerRef.current?.abort();
+  }, []);
+
   const handleGenerate = useCallback(async (formData: {
     theme: string;
     brandColor: string;
@@ -43,7 +49,8 @@ export function TextFlow({ onBack }: Props) {
     setAccentColor(formData.accentColor);
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 60000);
+    abortControllerRef.current = controller;
+    const timeout = setTimeout(() => controller.abort('timeout'), 60000);
 
     try {
       const res = await fetch(`${API_URL}/api/generate`, {
@@ -73,14 +80,23 @@ export function TextFlow({ onBack }: Props) {
       setResult(data);
       setStep('result');
     } catch (err) {
+      clearTimeout(timeout);
       if (err instanceof DOMException && err.name === 'AbortError') {
-        setError('生成に時間がかかっています。回数は消費されていません。もう一度お試しください。');
+        const reason = (err as DOMException).message;
+        if (reason === 'timeout') {
+          setError('生成に時間がかかっています。回数は消費されていません。もう一度お試しください。');
+        } else {
+          setError('生成をキャンセルしました。');
+        }
+      } else if (err instanceof TypeError && err.message.includes('fetch')) {
+        setError('ネットワークエラーが発生しました。接続を確認してもう一度お試しください。');
       } else {
         setError(err instanceof Error ? err.message : '生成に失敗しました');
       }
       setStep(3);
     } finally {
       setIsLoading(false);
+      abortControllerRef.current = null;
     }
   }, [category, format]);
 
@@ -110,7 +126,7 @@ export function TextFlow({ onBack }: Props) {
 
       {/* エラー表示 */}
       {error && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+        <div role="alert" className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
           {error}
         </div>
       )}
@@ -142,7 +158,7 @@ export function TextFlow({ onBack }: Props) {
       )}
 
       {step === 'loading' && (
-        <LoadingView />
+        <LoadingView onCancel={handleCancel} />
       )}
 
       {step === 'result' && result && (
@@ -198,7 +214,7 @@ export function TextFlow({ onBack }: Props) {
 
 // ===== ローディング =====
 
-function LoadingView() {
+function LoadingView({ onCancel }: { onCancel: () => void }) {
   const [stepText, setStepText] = useState('テーマ分析中...');
 
   useEffect(() => {
@@ -214,6 +230,12 @@ function LoadingView() {
       <div className="w-12 h-12 border-4 border-pink-200 border-t-pink-500 rounded-full animate-spin mx-auto mb-6" />
       <p className="text-lg font-bold text-gray-700">{stepText}</p>
       <p className="text-sm text-gray-400 mt-2">30秒ほどお待ちください</p>
+      <button
+        onClick={onCancel}
+        className="mt-6 text-sm text-gray-400 hover:text-gray-600 underline transition-colors"
+      >
+        キャンセル
+      </button>
     </div>
   );
 }

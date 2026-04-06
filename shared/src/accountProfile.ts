@@ -53,5 +53,10 @@ export function loadAccountProfile(): AccountProfile | null {
 }
 
 export function saveAccountProfile(profile: AccountProfile): void {
-  localStorage.setItem(ACCOUNT_PROFILE_KEY, JSON.stringify(profile));
+  try {
+    localStorage.setItem(ACCOUNT_PROFILE_KEY, JSON.stringify(profile));
+  } catch (e) {
+    console.error('Failed to save account profile to localStorage:', e);
+    throw new Error('プロフィールの保存に失敗しました。ブラウザのストレージ容量を確認してください。');
+  }
 }

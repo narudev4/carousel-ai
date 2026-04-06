@@ -75,7 +75,7 @@ const GOAL_OPTIONS = Object.entries(GOAL_LABELS) as [GoalType, string][];
 const TONE_OPTIONS = Object.entries(TONE_LABELS) as [ToneType, string][];
 
 export function SetupWizard({ onComplete }: Props) {
-  const { step, answers, updateAnswer, next, back, finish, isCoreComplete, isCurrentStepValid } =
+  const { step, answers, saveError, updateAnswer, next, back, finish, isCoreComplete, isCurrentStepValid } =
     useSetupWizard(onComplete);
 
   const stepDef = STEPS[step];
@@ -103,7 +103,14 @@ export function SetupWizard({ onComplete }: Props) {
       </div>
 
       {/* Progress bar */}
-      <div className="h-1 bg-gray-100">
+      <div
+        className="h-1 bg-gray-100"
+        role="progressbar"
+        aria-valuenow={step + 1}
+        aria-valuemin={1}
+        aria-valuemax={TOTAL_STEPS}
+        aria-label={`ステップ ${step + 1} / ${TOTAL_STEPS}`}
+      >
         <div
           className="h-full bg-pink-400 transition-all duration-300"
           style={{ width: `${progress}%` }}
@@ -111,21 +118,33 @@ export function SetupWizard({ onComplete }: Props) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col justify-center px-6 max-w-lg mx-auto w-full">
+      <div className="flex-1 flex flex-col justify-start pt-12 px-6 max-w-lg mx-auto w-full">
         {isOptional && (
           <span className="text-xs text-gray-400 mb-2 font-medium">任意</span>
         )}
 
         <h2 className="text-xl font-bold text-gray-800 mb-2">{stepDef.question}</h2>
-        <p className="text-sm text-gray-400 mb-6">{stepDef.hint}</p>
+        <p id="step-hint" className="text-sm text-gray-400 mb-6">{stepDef.hint}</p>
+
+        {/* Save error */}
+        {saveError && (
+          <div role="alert" className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+            {saveError}
+          </div>
+        )}
 
         {/* Text input */}
         {stepDef.type === 'text' && (
           <textarea
             autoFocus
             rows={2}
-            value={answers[stepDef.field] as string}
-            onChange={(e) => updateAnswer(stepDef.field as any, e.target.value)}
+            aria-label={stepDef.question}
+            aria-describedby="step-hint"
+            value={answers[stepDef.field as keyof typeof answers] as string}
+            onChange={(e) => {
+              const field = stepDef.field as 'genre' | 'targetAudience' | 'sellWhat' | 'specificGoal' | 'referenceAccounts' | 'ngExpressions';
+              updateAnswer(field, e.target.value);
+            }}
             onKeyDown={handleKeyDown}
             placeholder={stepDef.placeholder}
             className="w-full resize-none rounded-xl border-2 border-gray-200 focus:border-pink-400 focus:outline-none px-4 py-3 text-gray-800 text-base placeholder-gray-300 transition-colors"
@@ -134,7 +153,7 @@ export function SetupWizard({ onComplete }: Props) {
 
         {/* Goal radio */}
         {stepDef.type === 'goal-radio' && (
-          <div className="space-y-2">
+          <div className="space-y-2" role="radiogroup" aria-label={stepDef.question}>
             {GOAL_OPTIONS.map(([value, label]) => (
               <label key={value} className="flex items-center gap-3 cursor-pointer group">
                 <input
@@ -144,6 +163,7 @@ export function SetupWizard({ onComplete }: Props) {
                   checked={answers.primaryGoal === value}
                   onChange={() => updateAnswer('primaryGoal', value)}
                   className="w-4 h-4 accent-pink-500"
+                  aria-label={label}
                 />
                 <span className="text-gray-700 group-hover:text-pink-500 transition-colors">
                   {label}
@@ -165,7 +185,7 @@ export function SetupWizard({ onComplete }: Props) {
 
         {/* Tone radio */}
         {stepDef.type === 'tone-radio' && (
-          <div className="space-y-2">
+          <div className="space-y-2" role="radiogroup" aria-label={stepDef.question}>
             {TONE_OPTIONS.map(([value, label]) => (
               <label key={value} className="flex items-center gap-3 cursor-pointer group">
                 <input
@@ -175,6 +195,7 @@ export function SetupWizard({ onComplete }: Props) {
                   checked={answers.tone === value}
                   onChange={() => updateAnswer('tone', value)}
                   className="w-4 h-4 accent-pink-500"
+                  aria-label={label}
                 />
                 <span className="text-gray-700 group-hover:text-pink-500 transition-colors">
                   {label}
