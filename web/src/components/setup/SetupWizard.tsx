@@ -81,10 +81,17 @@ export function SetupWizard({ onComplete, onCancel, initialProfile }: Props) {
     useSetupWizard(onComplete, initialProfile);
 
   const stepDef = STEPS[step];
-  const progress = ((step + 1) / TOTAL_STEPS) * 100;
   const isOptional = step >= CORE_STEPS;
   const isLastStep = step === TOTAL_STEPS - 1;
   const canEarlyFinish = step === CORE_STEPS - 1 && isCoreComplete();
+
+  // コアステップ中は「1/4」、オプションに入ったら「5/8」形式で表示
+  const stepDisplay = isOptional
+    ? `${step + 1} / ${TOTAL_STEPS}`
+    : `${step + 1} / ${CORE_STEPS}`;
+  const progress = isOptional
+    ? ((step + 1) / TOTAL_STEPS) * 100
+    : ((step + 1) / CORE_STEPS) * 100;
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'Enter' && !e.shiftKey && isCurrentStepValid()) {
@@ -101,7 +108,7 @@ export function SetupWizard({ onComplete, onCancel, initialProfile }: Props) {
         <span className="text-lg font-bold text-pink-500">carousel-ai</span>
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-400 font-medium">
-            {step + 1} / {TOTAL_STEPS}
+            {stepDisplay}
           </span>
           {onCancel && (
             <button
@@ -121,8 +128,8 @@ export function SetupWizard({ onComplete, onCancel, initialProfile }: Props) {
         role="progressbar"
         aria-valuenow={step + 1}
         aria-valuemin={1}
-        aria-valuemax={TOTAL_STEPS}
-        aria-label={`ステップ ${step + 1} / ${TOTAL_STEPS}`}
+        aria-valuemax={isOptional ? TOTAL_STEPS : CORE_STEPS}
+        aria-label={`ステップ ${stepDisplay}`}
       >
         <div
           className="h-full bg-pink-400 transition-all duration-300"
