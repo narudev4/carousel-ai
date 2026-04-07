@@ -24,6 +24,7 @@ export function GeneratePage() {
           setShowWizard(false);
           setEditProfile(null);
         }}
+        onCancel={editProfile !== null ? () => setEditProfile(null) : undefined}
       />
     );
   }

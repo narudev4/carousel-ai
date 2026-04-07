@@ -4,6 +4,7 @@ import { useSetupWizard, TOTAL_STEPS, CORE_STEPS } from './useSetupWizard';
 
 interface Props {
   onComplete: () => void;
+  onCancel?: () => void;
   initialProfile?: AccountProfile | null;
 }
 
@@ -75,7 +76,7 @@ const STEPS: StepDef[] = [
 const GOAL_OPTIONS = Object.entries(GOAL_LABELS) as [GoalType, string][];
 const TONE_OPTIONS = Object.entries(TONE_LABELS) as [ToneType, string][];
 
-export function SetupWizard({ onComplete, initialProfile }: Props) {
+export function SetupWizard({ onComplete, onCancel, initialProfile }: Props) {
   const { step, answers, saveError, updateAnswer, next, back, finish, isCoreComplete, isCurrentStepValid } =
     useSetupWizard(onComplete, initialProfile);
 
@@ -98,9 +99,20 @@ export function SetupWizard({ onComplete, initialProfile }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
         <span className="text-lg font-bold text-pink-500">carousel-ai</span>
-        <span className="text-sm text-gray-400 font-medium">
-          {step + 1} / {TOTAL_STEPS}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-gray-400 font-medium">
+            {step + 1} / {TOTAL_STEPS}
+          </span>
+          {onCancel && (
+            <button
+              onClick={onCancel}
+              className="text-gray-400 hover:text-gray-600 text-sm transition-colors"
+              aria-label="キャンセル"
+            >
+              ✕
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Progress bar */}
@@ -120,6 +132,12 @@ export function SetupWizard({ onComplete, initialProfile }: Props) {
 
       {/* Content */}
       <div className="flex-1 flex flex-col justify-start pt-12 px-6 max-w-lg mx-auto w-full">
+        {step === 0 && (
+          <p className="text-sm text-gray-500 bg-gray-50 rounded-xl px-4 py-3 mb-6 leading-relaxed">
+            あなた専用のInstagram投稿を生成するために、アカウントのことを教えてください。回答はデバイスに保存され、次回から自動で使われます。
+          </p>
+        )}
+
         {isOptional && (
           <span className="text-xs text-gray-400 mb-2 font-medium">任意</span>
         )}
