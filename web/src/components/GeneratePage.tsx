@@ -42,7 +42,7 @@ export function GeneratePage() {
           <div className="text-right mb-2">
             <button
               onClick={handleEditProfile}
-              className="text-xs text-gray-400 hover:text-pink-500 transition-colors"
+              className="text-sm text-gray-500 hover:text-pink-500 px-3 py-1.5 rounded-lg hover:bg-pink-50 transition-colors"
             >
               アカウント設定を変更
             </button>

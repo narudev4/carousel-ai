@@ -260,7 +260,7 @@ export function SetupWizard({ onComplete, onCancel, initialProfile }: Props) {
           {canEarlyFinish && (
             <button
               onClick={finish}
-              className="px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-xl text-sm font-medium transition-colors"
+              className="px-5 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-xl text-sm font-medium transition-colors"
             >
               この内容で始める →
             </button>
