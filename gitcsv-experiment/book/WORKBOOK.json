@@ -1,0 +1,44 @@
+{
+  "workbookVersion": 4,
+  "name": "Git CSV GitHub往復実験",
+  "sheets": [
+    {
+      "id": "sheet-1",
+      "name": "Sheet1",
+      "styles": {
+        "0:0": {
+          "bold": true
+        },
+        "0:1": {
+          "bold": true
+        },
+        "0:2": {
+          "bold": true
+        },
+        "0:3": {
+          "bold": true
+        },
+        "0:4": {
+          "bold": true
+        },
+        "0:5": {
+          "bold": true
+        },
+        "0:6": {
+          "bold": true
+        },
+        "0:7": {
+          "bold": true
+        },
+        "3:1": {
+          "bold": true
+        },
+        "3:4": {
+          "bold": true,
+          "format": "currency"
+        }
+      },
+      "csv": "data/sheet-1.csv"
+    }
+  ]
+}
